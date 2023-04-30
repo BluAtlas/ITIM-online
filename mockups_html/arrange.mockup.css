@@ -1,0 +1,171 @@
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #000000;
+    margin: 0;
+    color: #FFFFFF;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    background-color: #000000;
+    font-size: 2em;
+    border-bottom: 1px solid white;
+}
+
+#label {
+    display: inline-block;
+    margin-left: .5em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#back {
+    display: inline-block;
+    margin-left: .5em;
+    margin-top: .5em;
+}
+
+#logo {
+    margin-top: -.1em;
+    margin-right: .5em;
+    font-size: 2em;
+    text-align: right;
+    float: right;
+}
+
+nav p {
+    margin: 0;
+}
+
+nav a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+nav a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #aaaaaa;
+}
+
+#wrapper {
+    padding-top: 5.3em;
+    height: calc(100% - 5.3em);
+}
+
+main {
+    height: 100%;
+}
+
+main h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+main button {
+    font-size: 1.5em;
+    width: 50%;
+    height: 3em;
+    margin-left: 25%;
+    border-radius: 2em;
+    grid-area: 2 / 1 / 3 / 1;
+    background-color: #000;
+    border: .1em solid #444;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1em;
+    min-width: fit-content;
+}
+
+main button:hover {
+    background-color: #444;
+}
+
+#mainGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 87% 11%;
+    width: 90%;
+    margin: auto;
+    height: 100%;
+}
+
+#phoned {
+    height: 100%;
+    grid-area: 1 / 2 / 3 / 3;
+    margin-top: 2%;
+}
+
+#phone {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+#icons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#search {
+    font-size: 1em;
+    color: #FFF;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: .5em;
+    padding: 1em;
+    width: 70%;
+}
+
+#imgGrid {
+    width: 100%;
+    margin-top: 1.5em;
+    overflow-y: scroll;
+    flex-grow: 1;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+#imgGrid img {
+    margin: 1em;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

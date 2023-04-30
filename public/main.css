@@ -1,0 +1,563 @@
+/* General and Nav */
+
+[v-cloak] {
+    display: none
+}
+
+html,
+#app {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000000;
+    margin: 0;
+    color: #FFFFFF;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+    height: 100%;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    background-color: #000000;
+    font-size: 2em;
+    border-bottom: 1px solid white;
+}
+
+#label {
+    display: inline-block;
+    margin-left: .5em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#back {
+    display: inline-block;
+    margin-left: .5em;
+    margin-top: .5em;
+    cursor: pointer;
+}
+
+#logo {
+    margin-top: -.1em;
+    margin-right: .5em;
+    font-size: 2em;
+    text-align: right;
+    float: right;
+}
+
+nav p {
+    margin: 0;
+}
+
+nav a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+nav a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #aaaaaa;
+}
+
+nav a:disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+#wrapper {
+    padding-top: 5.2em;
+    height: calc(100% - 5.2em);
+}
+
+main {
+    margin: 0;
+    height: 100%;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+
+/* welcome page */
+
+#welcome {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* index page */
+
+#mainGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 50% 50%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 80%;
+    margin-left: 10%;
+}
+
+#mainGrid h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    grid-area: 1 / 1 / 2 / 1;
+    height: 100%;
+}
+
+#mainPhoneDiv {
+    height: calc(100% - 1em);
+    grid-area: 1 / 2 / 3 / 3;
+    margin-top: 1em;
+}
+
+#mainPhoneDiv img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+#mainGrid button {
+    font-size: 1.5em;
+    width: 60%;
+    margin-left: 20%;
+    height: 3em;
+    border-radius: 2em;
+    grid-area: 2 / 1 / 3 / 1;
+    background-color: #000;
+    border: .1em solid #444;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+#mainGrid button:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+
+/* upload view */
+
+#uploadDiv {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+#uploadDiv h2 {
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+#uploadDiv button {
+    font-size: 1.5em;
+    width: 10em;
+    margin-top: 2em;
+    height: 3em;
+    border-radius: 2em;
+    background-color: #000;
+    border: .1em solid #444;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+#uploadDiv button:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+
+/* uploadEdit view */
+
+#uploadEditDiv {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+#uploadEditDiv a {
+    text-decoration: none;
+}
+
+#uploadEditDiv a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#uploadEditDiv a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#uploadEditDiv a:hover {
+    color: #aaaaaa;
+}
+
+#uploadEditDiv ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#uploadEditDiv li {
+    padding: none;
+}
+
+#uploadEditDiv button {
+    font-size: 1.5em;
+    width: 10em;
+    margin-top: 2em;
+    height: 3em;
+    border-radius: 2em;
+    background-color: #000;
+    border: .1em solid #444;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+#uploadEditDiv button:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+
+/* uploadLogin view */
+
+#uploadLoginDiv {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+#uploadLoginDiv a {
+    text-decoration: none;
+}
+
+#uploadLoginDiv a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#uploadLoginDiv a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#uploadLoginDiv a:hover {
+    color: #aaaaaa;
+}
+
+#uploadLoginDiv ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#uploadLoginDiv li {
+    padding: none;
+}
+
+#uploadLoginDiv button {
+    font-size: 1.5em;
+    width: 10em;
+    margin-top: 2em;
+    height: 3em;
+    border-radius: 2em;
+    background-color: #000;
+    border: .1em solid #444;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+#uploadLoginDiv button:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+
+/* templateEdit div*/
+
+#TemplateEditDiv {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: right;
+}
+
+#TemplateEditDiv input {
+    background-color: black;
+    color: white;
+    margin: .5em;
+}
+
+#TemplateEditDiv button {
+    font-size: 1.5em;
+    width: 10em;
+    margin: 2em;
+    height: 3em;
+    border-radius: 2em;
+    background-color: #000;
+    border: .1em solid #444;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+#TemplateEditDiv button:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+.TemplateEditDivErrors {
+    text-align: left;
+}
+
+
+/* arrange view */
+
+#arrangeGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 87% 11%;
+    width: 90%;
+    margin: auto;
+    height: 100%;
+}
+
+#arrangeGrid h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+#arrangeGrid button {
+    font-size: 1.5em;
+    width: 50%;
+    height: 3em;
+    margin-left: 25%;
+    border-radius: 2em;
+    grid-area: 2 / 1 / 3 / 1;
+    background-color: #000;
+    border: .1em solid #444;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1em;
+    min-width: fit-content;
+}
+
+#arrangeGrid button:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+#arrangeIcons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#arrangeSearch {
+    font-size: 1em;
+    color: #FFF;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: .5em;
+    padding: 1em;
+    width: 70%;
+}
+
+#arrangeImgGrid {
+    width: 100%;
+    margin-top: 1.5em;
+    overflow-y: scroll;
+    flex-grow: 1;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+#arrangeImgGrid img {
+    margin: 1em;
+}
+
+#arrangePhoneDiv {
+    height: 100%;
+    grid-area: 1 / 2 / 3 / 3;
+    margin-top: 2%;
+}
+
+#arrangePhone {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* processing view */
+
+#processingDiv {
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+
+/* complete view */
+
+#completeGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 10% 70% 20%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 100%;
+}
+
+#completeGrid h1 {
+    grid-area: 1 / 1 / 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.0em;
+}
+
+#completeGrid button {
+    font-size: 1.5em;
+    width: 40%;
+    height: 3em;
+    border-radius: 2em;
+    background-color: #000;
+    border: .1em solid #444;
+    color: white;
+    min-width: fit-content;
+}
+
+#completeGrid button:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+#completeIconDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+#completeIcons {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    flex-grow: 1;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+#completeIcons img {
+    margin: 1em;
+}
+
+#completePhoneDiv {
+    height: 100%;
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#completePhone {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+#completeDownloadDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: 3 / 1 / 4 / 3;
+}
+
+
+/* transitions */
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 3s ease;
+}
+
+.fadeW-enter,
+.fadeW-leave-to {
+    opacity: 0
+}
+
+.fadeW-enter-active {
+    transition: opacity 3s ease;
+}
+
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

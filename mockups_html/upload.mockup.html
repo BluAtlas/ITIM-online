@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ITIM - Upload</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='upload.mockup.css'>
+</head>
+
+<body>
+    <div id="app">
+        <nav>
+            <div id="back">
+                <a href="">&#60;</a>
+            </div>
+            <div id="label">
+                <p>Upload Background and Icons</p>
+            </div>
+            <div id="logo">
+                <a href="index.html">ITIM</a>
+            </div>
+        </nav>
+        <div id="wrapper">
+            <main>
+                <div id="iphone">
+                    <h2>iPhone</h2>
+                    <label for="iPhones">Choose an iPhone:</label>
+
+                    <select name="iPhone" id="iPhones">
+                        <option value="12m">iPhone 12 Mini</option>
+                        <option value="12pm">iPhone 12 Pro Max</option>
+                    </select>
+                </div>
+                <br>
+                <div id="background">
+                    <h2>Background</h2>
+                    <form action="/action_page.php">
+                        <input type="file" id="myFile" name="filename">
+                        <input type="submit">
+                    </form>
+                </div>
+                <br>
+                <div id="icons">
+                    <h2>Icons</h2>
+                    <label for="icons">Choose an icon set:</label>
+
+                    <select name="icons" id="icons">
+                        <option value="gold">gold</option>
+                        <option value="monochrome">monochrome</option>
+                    </select>
+                    <p>or upload a .zip of your own</p>
+                    <form action="/action_page.php">
+                        <input type="file" id="myFile" name="filename">
+                        <input type="submit">
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

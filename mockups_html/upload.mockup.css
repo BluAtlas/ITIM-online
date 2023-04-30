@@ -1,0 +1,95 @@
+html {
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+body {
+    background-color: #000000;
+    margin: 0;
+    color: #FFFFFF;
+    display: flex;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+    flex-direction: column;
+    height: 100%;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    background-color: #000000;
+    font-size: 2em;
+    border-bottom: 1px solid white;
+}
+
+#label {
+    display: inline-block;
+    margin-left: .5em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#back {
+    display: inline-block;
+    margin-left: .5em;
+    margin-top: .5em;
+}
+
+#logo {
+    margin-top: -.1em;
+    margin-right: .5em;
+    font-size: 2em;
+    text-align: right;
+    float: right;
+}
+
+nav p {
+    margin: 0;
+}
+
+nav a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+nav a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #aaaaaa;
+}
+
+#wrapper {
+    padding-top: 5.3em;
+    height: calc(100% - 5.3em);
+}
+
+main {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin: 0
+}
+
+main h2 {
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+main form {
+    margin-left: 1em;
+}

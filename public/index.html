@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>ITIM - Welcome</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <div id="app">
+        <nav>
+            <div id="back">
+                <a href="javascript:" :disable="pageCounter == 1" v-on:click="pageBack" href="">&#60;</a>
+            </div>
+            <div id="label">
+                <p v-text="pageDescription">Getting Started</p>
+            </div>
+            <div id="logo">
+                <a href="">ITIM</a>
+            </div>
+        </nav>
+        <div id="wrapper">
+            <main v-cloak>
+                <!-- Welcome -->
+                <transition name="fade">
+                    <div id="welcome" v-if="welcomeView">
+                        <h1 id="welcomeText">Welcome</h1>
+                    </div>
+                </transition>
+                <!-- /Welcome -->
+                <!-- Main view -->
+                <transition name="fadeW">
+                    <div id="mainGrid" v-if="pageCounter == 1">
+                        <h1>Let's create some transparency for your home screen</h1>
+                        <div id="mainPhoneDiv">
+                            <img src="img/iphone.png" alt="iPhone">
+                        </div>
+                        <button v-on:click="mainButtonClick">Get Started</button>
+                    </div>
+                </transition>
+                <!-- /Main view -->
+                <!-- Upload view -->
+                <div id="uploadDiv" v-if="pageCounter == 2 && !uploadEditing && !uploadTemplateEditing && !uploadLogin">
+                    <div>
+                        <h2>iPhone</h2>
+                        <label for="iPhones">Choose an iPhone:</label>
+
+                        <select v-model="uploadIphoneIdSelected" name="iPhone">
+                            <option v-for="iphone in uploadIphoneTemplates" v-bind:value="iphone._id">{{ iphone.name }}</option>
+                    </select>
+                        <br>
+                        <br>
+                        <input type="button" v-on:click="uploadEditSwitchTemplateView" value="Edit Templates" v-if="uploadIphoneTemplates.length > 0">
+                    </div>
+                    <br>
+                    <div>
+                        <h2>Background</h2>
+                        <input type="file" accept=".png,.jpg,.jpeg" v-on:change="uploadSelectBackgroundFile($event)">
+                    </div>
+                    <br>
+                    <div>
+                        <h2>Icons</h2>
+                        <p>upload multiple icons of your own</p>
+                        <form action="/action_page.php">
+                            <input type="file" accept=".png,jpg,.jpeg" v-on:change="uploadSelectIconFiles($event)" multiple>
+                        </form>
+                    </div>
+                    <button v-if="uploadIphoneIdSelected && uploadBackgroundFile &&  uploadIconFiles.length > 0" v-on:click="uploadContinue">Continue</button>
+                </div>
+                <!-- /Upload view -->
+                <!-- UploadLogin view -->
+                <div id="uploadLoginDiv" v-if="pageCounter == 2 && uploadLogin">
+                    Username: <input type="text" v-model="inputUserName" placeholder="Username">
+                    <br> Password: <input type="password" v-model="inputUserPassword" placeholder="Password">
+                    <button v-on:click="uploadLoginTryLogin">Login</button>
+                    <button v-on:click="uploadLoginCreateUser">Create Account</button>
+                    <button v-on:click="uploadEditSwitchTemplateView">Back to Upload</button>
+                    <div v-if="!newUserIsValid">
+                        <ul class="TemplateEditDivErrors">
+                            <li v-for="error in errors">{{ error }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /UploadLogin view -->
+                <!-- UploadEdit view -->
+                <div id="uploadEditDiv" v-if="pageCounter == 2 && uploadEditing">
+                    <ul>
+                        <h1>Click to Edit:</h1>
+                        <li v-for="template in uploadIphoneTemplates">
+                            <a href="javascript:" v-on:click="uploadEditOnEditButton(template)">{{template.name}}</a>
+                            <br>
+                        </li>
+                    </ul>
+                    <input type="button" v-on:click="newTemplate" value="Create New Template">
+                    <button v-on:click="uploadLogout">Logout</button>
+                    <button v-on:click="uploadEditSwitchTemplateView">Back to Upload</button>
+                    <ul class="TemplateEditDivErrors">
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </div>
+                <!-- /UploadEdit view -->
+                <!-- TemplateEdit view -->
+                <div id="TemplateEditDiv" v-if="pageCounter == 2 && uploadTemplateEditing">
+                    <div>
+                        Name: <input type="text" v-model="inputTemplateName" v-on:input="checkIfNewTemplate" placeholder="Name">
+                        <br> Phone Size X:<input v-model="inputPhoneSizeX" type="number" placeholder="Phone Size X">
+                        <br> Phone Size Y: <input v-model="inputPhoneSizeY" type="number" placeholder="Phone Size Y">
+                        <br> App Size: <input v-model="inputAppSize" type="number" placeholder="App Size">
+                        <br> From Top: <input v-model="inputFromTop" type="number" placeholder="From Top">
+                        <br> From Left: <input v-model="inputFromLeft" type="number" placeholder="From Left">
+                        <br> Between X: <input v-model="inputBetweenX" type="number" placeholder="Between X">
+                        <br> Between Y: <input v-model="inputBetweenY" type="number" placeholder="Between Y">
+                        <br> From Bottom: <input v-model="inputFromBottom" type="number" placeholder="From Bottom">
+                        <br> From Left Dock: <input v-model="inputFromLeftDock" type="number" placeholder="From Left Dock">
+                        <br> Max Apps: <input v-model="inputMaxApps" type="number" placeholder="Max Apps">
+                        <br> Dock Count: <input v-model="inputDockCount" type="number" placeholder="Dock Count">
+                    </div>
+                    <div>
+                        <div>
+                            <button @click="saveTemplate">{{ templateEditSaveButton }}</button>
+                            <button @click="cancelTemplate">Cancel</button>
+                            <button @click="deleteTemplate" v-if="deleteTemplateIf">Delete Template</button>
+                        </div>
+                        <div v-if="!newTemplateIsValid">
+                            <ul class="TemplateEditDivErrors">
+                                <li v-for="error in errors">{{ error }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /TemplateEdit view -->
+                <!-- Arrange view -->
+                <!-- not implemented for now
+                <div id="arrangeGrid" v-if="pageCounter == 99">
+                    <div id="arrangeIcons">
+                        <h1>Icons</h1>
+                        <input id="arrangeSearch" type="text" placeholder="Search...">
+                        <div id="arrangeImgGrid">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                        </div>
+                    </div>
+                    <div id="arrangePhoneDiv">
+                        <img src="../client/img/iphone.png" alt="iPhone" id="arrangePhone">
+                    </div>
+                    <button v-on:click="pageContinue">Continue</button>
+                </div>
+                -->
+                <!-- /Arrange view -->
+                <!-- Processing view -->
+                <div id="processingDiv" v-if="pageCounter == 3">
+                    <h1>Processing...</h1>
+                </div>
+                <!-- /Processing view -->
+                <!-- Complete view -->
+                <div id="completeGrid" v-if="pageCounter == 4">
+                    <h1 v-if="JOBID">Processing Complete</h1>
+                    <h1 v-if="!JOBID">Error. Please go back to the upload page and try again.</h1>
+                    <!--
+                    <div id="completeIconDiv">
+                        <div id="completeIcons">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                            <img src="../client/img/placeholderW.png" width="75">
+                        </div>
+                    </div>
+                    <div id="completePhoneDiv">
+                        <img src="../client/img/iphone.png" alt="iPhone" id="completePhone">
+                    </div>-->
+                    <div id="completeDownloadDiv">
+                        <button v-on:click="completeDownload" v-if="JOBID">Download</button>
+                    </div>
+                </div>
+                <!-- /Complete view -->
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

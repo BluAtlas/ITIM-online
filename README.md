@@ -2,6 +2,8 @@
 
 A web frontend for [my ITIM Go program](https://github.com/BluAtlas/ITIM) using VueJs and Express.
 
+![ITIM](/img.png)
+
 ## Hosting
 
 ITIM.exe and ./ITIM can be compiled from [https://github.com/BluAtlas/ITIM](https://github.com/BluAtlas/ITIM)
